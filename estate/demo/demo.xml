@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+
+        <record id="estate_property_demo_1"
+                model="estate.property">
+
+            <field name="name">
+                Luxury Villa
+            </field>
+
+            <field name="expected_price">
+                500000
+            </field>
+
+            <field name="bedrooms">
+                4
+            </field>
+
+            <field name="living_area">
+                2500
+            </field>
+
+            <field name="garden">
+                True
+            </field>
+
+            <field name="garden_orientation">
+                north
+            </field>
+
+        </record>
+
+    </data>
+</odoo>

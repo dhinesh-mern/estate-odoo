@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <!-- Main Menu -->
+
+    <menuitem id="estate_menu_root"
+              name="Real Estate"/>
+
+
+    <!-- Property Menus -->
+
+    <menuitem id="estate_property_menu"
+              name="Properties"
+              parent="estate_menu_root"/>
+<!-- Advertisement Menu -->
+
+<menuitem id="estate_advertisement_menu"
+          name="Advertisement"
+          parent="estate_menu_root"/>
+
+<menuitem
+    id="estate_property_offer_menu"
+    name="Offers"
+    parent="estate_advertisement_menu"
+    action="estate_property_offer_action"/>
+
+
+<menuitem
+    id="estate_property_offer_menu"
+    name="Offers"
+    parent="estate_advertisement_menu"
+    action="estate_property_offer_action"/>
+    
+    <!-- <menuitem id="estate_property_menu_2"
+              name="Properties_2"
+              parent="estate_menu_root"/>
+
+    <menuitem id="estate_property_menu_3"
+              name="Properties_3"
+              parent="estate_menu_root"/> -->
+
+
+    <!-- Property Actions -->
+
+    <menuitem id="estate_property_action_menu"
+              name="Property List"
+              parent="estate_property_menu"
+              action="estate_property_action"/>
+
+    <!-- <menuitem id="estate_property_action_menu_2"
+              name="Property List_2"
+              parent="estate_property_menu_2"
+              action="estate_property_action"/>
+
+    <menuitem id="estate_property_action_menu_3"
+              name="Property List_3"
+              parent="estate_property_menu_3"
+              action="estate_property_action"/> -->
+
+
+    <!-- Settings Menu -->
+
+    <menuitem id="estate_property_settings_menu"
+              name="Settings"
+              parent="estate_menu_root"
+              sequence="100"/>
+
+
+    <!-- Estate Property Type Menu -->
+
+    <menuitem id="estate_property_type_menu"
+              name="Estate Property Types"
+              parent="estate_property_settings_menu"
+              action="estate_property_type_action"
+              sequence="10"/>
+
+</odoo>

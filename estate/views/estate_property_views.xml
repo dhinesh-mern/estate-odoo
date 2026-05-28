@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <!-- Tree View -->
+
+    <record id="estate_property_view_tree"
+            model="ir.ui.view">
+
+        <field name="name">estate.property.view.tree</field>
+
+        <field name="model">estate.property</field>
+
+        <field name="arch" type="xml">
+
+            <tree>
+
+                <field name="name"/>
+
+                <field name="property_type_id"/>
+
+                <field name="postcode"/>
+
+                <field name="expected_price"/>
+
+                <field name="selling_price"/>
+
+                <field name="bedrooms"/>
+
+                <field name="living_area"/>
+
+
+
+            </tree>
+
+        </field>
+
+    </record>
+
+<!-- Form View -->
+
+<record id="estate_property_view_form"
+        model="ir.ui.view">
+
+    <field name="name">estate.property.view.form</field>
+
+    <field name="model">estate.property</field>
+
+    <field name="arch" type="xml">
+
+        <form>
+
+
+
+            <sheet>
+
+
+            
+
+
+
+                <!-- Title Section -->
+
+                <div class="oe_title">
+
+                    <label for="name"/>
+
+                    <h1>
+
+                        <field name="name"/>
+
+                    </h1>
+
+                </div>
+
+<field name="tag_ids"
+       widget="many2many_tags"/>
+
+                <!-- Main Fields -->
+
+                <group>
+
+                    <field name="name"/>
+
+                    <field name="property_type_id"/>
+
+                </group>
+
+                <group>
+
+                    <group>
+
+                        <field name="postcode"/>
+
+                        <field name="date_availability"/>
+
+                    </group>
+
+                    <group>
+
+                        <field name="expected_price"/>
+
+                        <field name="selling_price"/>
+
+                    </group>
+
+            <group>
+                    <field name="best_price"/>
+
+           </group>
+
+                </group>
+
+
+                <!-- Notebook Tabs -->
+
+                <notebook>
+
+                    <!-- Description Tab -->
+
+                    <page string="Description">
+
+                        <group>
+
+                            <field name="description"/>
+
+                            <field name="bedrooms"/>
+
+                            <field name="living_area"/>
+
+                            <field name="garage"/>
+
+                            <field name="garden"/>
+
+                            <field name="garden_area"/>
+
+                            <field name="total_area"/>
+                            
+                            <field name="garden_orientation"/>
+
+                            <field name="state"/>
+
+                        </group>
+
+                    </page>
+
+
+
+                    <page string="Sales">
+
+                            <group>
+
+                                <field name="buyer_id"/>
+
+                                <field name="salesperson_id"/>
+
+                            </group>
+
+                    </page>
+
+
+
+                    <page string="Offers">
+
+                        <field name="offer_ids">
+
+                            <tree editable="bottom">
+
+                                <field name="price"/>
+
+                                <field name="partner_id"/>
+
+                                <field name="status"/>
+
+                            </tree>
+
+                        </field>
+
+                    </page>
+
+                </notebook>
+
+            </sheet>
+
+        </form>
+
+    </field>
+
+</record>
+
+
+<!-- OFFER TREE VIEW -->
+
+<record id="estate_property_offer_view_tree"
+        model="ir.ui.view">
+
+    <field name="name">estate.property.offer.view.tree</field>
+
+    <field name="model">estate.property.offer</field>
+
+    <field name="arch" type="xml">
+
+        <tree editable="bottom">
+
+            <field name="property_id"/>
+
+            <field name="partner_id"/>
+
+            <field name="price"/>
+
+            <field name="status"/>
+
+            <field name="property_type_id"/>
+
+            <field name="validity"/>
+
+            <field name="date_deadline"/>
+
+        </tree>
+
+    </field>
+
+</record>
+
+
+<!-- OFFER FORM VIEW -->
+
+<record id="estate_property_offer_view_form"
+        model="ir.ui.view">
+
+    <field name="name">estate.property.offer.view.form</field>
+
+    <field name="model">estate.property.offer</field>
+
+    <field name="arch" type="xml">
+
+        <form>
+
+            <sheet>
+
+                <group>
+
+                    <field name="price"/>
+
+                    <field name="partner_id"/>
+
+                    <field name="status"/>
+
+                    <field name="property_id"/>
+
+                    <field name="validity"/>
+                    
+                    <field name="date_deadline"/>
+
+                </group>
+
+            </sheet>
+
+        </form>
+
+    </field>
+
+</record>
+
+
+<!-- Search View -->
+
+<record id="estate_property_view_search"
+        model="ir.ui.view">
+
+    <field name="name">estate.property.view.search</field>
+
+    <field name="model">estate.property</field>
+
+    <field name="arch" type="xml">
+
+        <search string="Search Properties">
+
+            <!-- Searchable Fields -->
+
+            <field name="name"/>
+
+            <field name="property_type_id"/>
+
+            <field name="postcode"/>
+
+            <field name="expected_price"/>
+
+            <field name="bedrooms"/>
+
+            <field name="living_area"/>
+
+            <field name="facades"/>
+
+
+            <!-- Filters -->
+
+            <filter name="filter_garden"
+                    string="Garden"
+                    domain="[('garden', '=', True)]"/>
+
+            <filter name="filter_garage"
+                    string="Garage"
+                    domain="[('garage', '=', True)]"/>
+
+            <filter name="filter_new"
+                    string="New Properties"
+                    domain="[('state', '=', 'new')]"/>
+
+            <filter name="filter_offer_received"
+                    string="Offer Received"
+                    domain="[('state', '=', 'offer_received')]"/>
+
+
+            <!-- Group By -->
+
+            <group expand="0" string="Group By">
+
+                <filter name="group_state"
+                        string="State"
+                        context="{'group_by': 'state'}"/>
+
+                <filter name="group_bedrooms"
+                        string="Bedrooms"
+                        context="{'group_by': 'bedrooms'}"/>
+
+                <filter name="group_property_type"
+                        string="Property Type"
+                        context="{'group_by': 'property_type_id'}"/>
+
+                <filter name="group_postcode"
+                        string="Postcode"
+                        context="{'group_by': 'postcode'}"/>
+
+            </group>
+
+        </search>
+
+    </field>
+
+</record>
+
+
+<!-- TAG TREE VIEW -->
+
+<record id="estate_property_tag_view_tree"
+        model="ir.ui.view">
+
+    <field name="name">estate.property.tag.view.tree</field>
+
+    <field name="model">estate.property.tag</field>
+
+    <field name="arch" type="xml">
+
+        <tree>
+
+            <field name="name"/>
+
+        </tree>
+
+    </field>
+
+</record>
+
+
+<!-- TAG FORM VIEW -->
+
+<record id="estate_property_tag_view_form"
+        model="ir.ui.view">
+
+    <field name="name">estate.property.tag.view.form</field>
+
+    <field name="model">estate.property.tag</field>
+
+    <field name="arch" type="xml">
+
+        <form>
+
+            <sheet>
+
+                <group>
+
+                    <field name="name"/>
+
+                </group>
+
+            </sheet>
+
+        </form>
+
+    </field>
+
+</record>
+
+
+<!-- ACTION -->
+
+<record id="estate_property_tag_action"
+        model="ir.actions.act_window">
+
+    <field name="name">Property Tags</field>
+
+    <field name="res_model">estate.property.tag</field>
+
+    <field name="view_mode">tree,form</field>
+
+</record>
+
+
+<!-- MENU -->
+
+<menuitem id="estate_property_tag_menu"
+          name="Property Tags"
+          parent="estate_property_settings_menu"
+          action="estate_property_tag_action"
+          sequence="20"/>
+
+    <!-- Action -->
+
+    <record id="estate_property_action"
+            model="ir.actions.act_window">
+
+        <field name="name">Properties</field>
+
+        <field name="res_model">estate.property</field>
+
+        <field name="view_mode">tree,form</field>
+
+        <field name="search_view_id"
+               ref="estate_property_view_search"/>
+
+        </record>
+
+    <record id="estate_property_offer_action"
+        model="ir.actions.act_window">
+
+    <field name="name">Offers</field>
+
+    <field name="res_model">estate.property.offer</field>
+
+    <field name="view_mode">tree,form</field>
+
+         </record>
+
+
+
+</odoo>
