@@ -1,5 +1,5 @@
 {
-    'name': 'real estate',
+    'name': 'dhinesh_estate_123',
     'version': '1.0',
     'depends': ['base'],
     'application': True,
